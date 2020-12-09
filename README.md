@@ -1,6 +1,10 @@
 # INGINIRIUM & IT-Fest Py 3
 #### Проект для конкурса IT-Fest Python
 #### Кейс 3.«Текстовый квест»
+
+### !How to use!
+### Run index.py in work folder. `python index.py`
+
 Команда `Офионовцы`
 - `Орлова Анна Игоревна`
 - `Басова Анастасия Владимировна`
