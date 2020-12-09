@@ -1,4 +1,4 @@
-# it_fest_3_ofio
+# INGINIRIUM & IT-Fest Py 3
 #### Проект для конкурса IT-Fest Python
 Проект сделали
 - `Орлова Анна Игоревна`
