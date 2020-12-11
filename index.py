@@ -12,6 +12,8 @@ star_time = time.time()
 pygame.init()
 app = pygame.display.set_mode((W, H))
 clock = pygame.time.Clock()
+
+# pygame.mouse.set_visible(False)
 ###########################################################
 col_in = (0, 200, 200)
 col_out = (153, 204, 255)
@@ -172,7 +174,6 @@ def txt_first_21():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				exit()
-		
 		
 		app.blit(trans(back_img1), (0, 0))
 		app.blit(kompon_img2, (450, 10))#Всавить спрайт персонажа
@@ -740,7 +741,7 @@ def txt_fourth():
 			pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста
 			pygame.draw.rect(app, name_window, (90, 290, 150, 20)) #Окно для имени говорящего 
 			print_text(chr_2name, 120, 290, font_col = name_col, font_size= 30) #Выведет имя персонажа
-			print_text(D1_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
+			print_text(D1_1.format(usr_name), 70, 340, font_col = text_col) #Выведет сам текст сюжета
 			print_text(D1_2, 70, 370, font_col = text_col)
 			
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fourth_1)
@@ -829,7 +830,7 @@ def txt_fourth_12():
 		pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста
 		pygame.draw.rect(app, name_window, (90, 290, 150, 20)) #Окно для имени говорящего 
 		print_text(chr_1name, 120, 290, font_col = name_col, font_size= 30) #Выведет имя персонажа
-		print_text(D4_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
+		print_text(D4_1.format(usr_name), 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		print_text(D4_2, 70, 370, font_col = text_col) 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_0, back_1= back_img4, back_2= back_img6)
@@ -1401,7 +1402,7 @@ def txt_seventh_2():
 			pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста
 			pygame.draw.rect(app, name_window, (90, 290, 150, 20)) #Окно для имени говорящего 
 			print_text(chr_1name, 120, 290, font_col = name_col, font_size= 30)  #Выведет имя персонажа
-			print_text(G2_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
+			print_text(G2_1.format(usr_name), 70, 340, font_col = text_col) #Выведет сам текст сюжета
 			print_text(G2_2, 70, 370, font_col = text_col)
 			print_text(G2_3, 70, 400, font_col = text_col)
 
