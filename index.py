@@ -12,6 +12,7 @@ W, H, FPS = 860, 540, 60
 pygame.init()
 app = pygame.display.set_mode((W, H))
 clock = pygame.time.Clock()
+start_time = time.time()
 
 pygame.mouse.set_visible(False)
 ###########################################################
@@ -142,14 +143,14 @@ def txt_first():
 
 
 def txt_first_1():
-	
+	start_time = time.time()
 
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				exit()
 		
-		if star_time > 1:
+		if start_time > 1:
 			app.blit(trans(back_img1), (0, 0))
 			app.blit(kompon_img1, (450, 10))#Всавить спрайт персонажа
 			pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста
@@ -1738,7 +1739,7 @@ def which_answers1(answer):
 
 
 def first_loc():
-	
+	start_time = time.time()
 	sound_moon.set_volume(0.3)
 	sound_moon.play()
 	while True:
@@ -1750,7 +1751,7 @@ def first_loc():
 		#black_change(img1 = back_img11, img2 = back_img1)# Переход...
 
 		mouse = pygame.mouse.get_pos()
-		current_time = int(time.time() - star_time)
+		current_time = int(time.time() - start_time)
 		if current_time >= 2:
 			button_txt(110, 140, 630, 100, 'Какая большая поляна, красиво….', x_sh = 30, y_sh = 30, action = txt_first)
 			print_text('Стоп, а как я тут оказался?', 140, 200)
@@ -1900,8 +1901,7 @@ def the_end(back=back_img1):
 		app.blit(trans(back), (0,0))
 		if back == back_img1:
 			print_text(f'{usr_name}, Ваши баллы: {score_usr}', 200, 300, font_size=50, font_col=col_out)
-		else:
-    		 
+		else: 
 			print_text(f'{usr_name}, ты набрал {score_usr}', 300, 350, font_size=50, font_col=col_out)
 		button_txt(650, 460, 120, 40, 'К МЕНЮ', x_sh = 15, y_sh = 15, action = menu)
 		button_txt(200, 460, 120, 40, 'ТОП', x_sh = 15, y_sh = 15, action = show_list)
@@ -1912,7 +1912,8 @@ def the_end(back=back_img1):
 def show_list():
 	global data
 
-	list_data	= sorted(data.select_all(), key=lambda x: -x[1])[:5]
+	list_data_all_sorted = sorted(data.select_all(), key=lambda x: -x[1])
+	list_data 			 = list_data_all_sorted[:5]
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
