@@ -8,12 +8,12 @@ import pathlib
 
 W, H, FPS = 860, 540, 60
 ###########################################################
-star_time = time.time()
+
 pygame.init()
 app = pygame.display.set_mode((W, H))
 clock = pygame.time.Clock()
 
-# pygame.mouse.set_visible(False)
+pygame.mouse.set_visible(False)
 ###########################################################
 col_in = (0, 200, 200)
 col_out = (153, 204, 255)
@@ -99,6 +99,11 @@ black_img = pygame.image.load(r'assets\Background\black.png')
 ###########################################################
 
 
+def update_with_mouse():
+	pygame.draw.circle(app, (255, 255, 255), pygame.mouse.get_pos(), 10)
+	# app.blit(cursor_img, pygame.mouse.get_pos())
+	pygame.display.update()
+
 def trans(img):
 	return pygame.transform.scale(img, (860, 540))
 
@@ -108,7 +113,7 @@ def txt_first():
 	is_ready = False
 	x = W
 	y = 10
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -132,12 +137,12 @@ def txt_first():
 		if is_ready is True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action=txt_first_1)
 
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
 def txt_first_1():
-	star_time = time.time()
+	
 
 	while True:
 		for event in pygame.event.get():
@@ -153,7 +158,7 @@ def txt_first_1():
 			print_text(A2_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_2)
-			pygame.display.update()
+			update_with_mouse()
 
 
 def txt_first_2():
@@ -166,7 +171,7 @@ def txt_first_2():
 		button_txt(110, 140, 630, 100, 'Что ты такое?', x_sh = 30, y_sh = 30, action = txt_first_21)
 		button_txt(110, 300, 630, 100, 'Как я здесь оказался?', x_sh = 30, y_sh = 30, action = txt_first_22)
 		
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_21():
@@ -183,7 +188,7 @@ def txt_first_21():
 		print_text("Как невежливо.Похоже ты не здешний…", 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_3)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_22():
@@ -201,7 +206,7 @@ def txt_first_22():
 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_3)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_3():
@@ -220,7 +225,7 @@ def txt_first_3():
 		print_text(A3_2, 70, 370, font_col = text_col)
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_4)
 
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_4():
@@ -239,7 +244,7 @@ def txt_first_4():
 		print_text(A4_2, 70, 370, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_5)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_5():
@@ -256,7 +261,7 @@ def txt_first_5():
 		print_text(A5_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_first_6)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_6():
@@ -268,7 +273,7 @@ def txt_first_6():
 		button_txt(110, 140, 630, 100, 'Одним приключением больше? Хорошо!', x_sh = 30, y_sh = 30, action = txt_first_61 )
 		button_txt(110, 300, 630, 100, F1_1, x_sh = 30, y_sh = 30, action = txt_first_62 )
 		print_text(F1_2, 140, 360, font_col = text_col)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_61():
@@ -286,7 +291,7 @@ def txt_first_61():
 		print_text(F1_3, 70, 370, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_second, back_1=back_img1, back_2=back_img2)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_first_62():
@@ -307,14 +312,14 @@ def txt_first_62():
 		print_text(F2_1, 70, 340, font_col = text_col)
 		print_text(F2_2, 70, 370, font_col = text_col)
 		button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_second():
 	is_ready = False
 	x = -860
 	y = 10
-	star_time = time.time()
+	
 	sound_moon.stop()
 	sound_forest.set_volume(0.5)
 	sound_forest.play()
@@ -339,7 +344,7 @@ def txt_second():
 		print_text(B1_2, 70, 370, font_col = text_col)
 		if is_ready is True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_second_1)
-		pygame.display.update()                                         
+		update_with_mouse()                                         
 
 
 def txt_second_1():
@@ -357,7 +362,7 @@ def txt_second_1():
 		print_text(B2_2, 70, 370, font_col = text_col) #Выведет сам текст сюжета
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_second_2)
 
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_second_2():
@@ -375,7 +380,7 @@ def txt_second_2():
 		print_text(B3_2, 70, 370, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_second_3)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_second_3():
@@ -390,7 +395,7 @@ def txt_second_3():
 		print_text(F3_2, 140, 200, font_col = text_col)
 		button_txt(110, 300, 630, 100, 'Неплохая идея, почему бы и нет.', x_sh = 30, y_sh = 30, action = txt_second_32)
 			
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_second_31():
@@ -408,16 +413,16 @@ def txt_second_31():
 		print_text(F4_2, 70, 370, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_0, back_1=back_img2, back_2=back_img6)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_second_32():
 	global score_win
-	star_time = time.time()
+	
 	is_ready = False
 	x = 450
 	y = 10
-	star_time = time.time()
+	
 
 	while True:
 		for event in pygame.event.get():
@@ -437,15 +442,15 @@ def txt_second_32():
 			is_ready = True
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third, back_1=back_img2, back_2=back_img3)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third():
-	star_time = time.time()
+	
 	is_ready = False
 	x = W
 	y = 10
-	star_time = time.time()
+	
 	sound_river.set_volume(0.1)
 	sound_river.play()
 	while True:
@@ -466,7 +471,7 @@ def txt_third():
 			print_text(C1_1, 70, 340, font_col = text_col) 
 		if is_ready is True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_1)
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
@@ -486,7 +491,7 @@ def txt_third_1():
 		print_text(C2_3, 70, 400, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_2)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_2():
@@ -502,7 +507,7 @@ def txt_third_2():
 		print_text(C3_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_3)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_3():
@@ -517,7 +522,7 @@ def txt_third_3():
 		print_text(chr_1name, 120, 290, font_col = name_col, font_size= 30) #Выведет имя персонажа
 		print_text(C4_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_4)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_4():
@@ -532,15 +537,15 @@ def txt_third_4():
 		print_text(chr_1name, 120, 290, font_col = name_col, font_size= 30) #Выведет имя персонажа
 		print_text(C5_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_5)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_5():
-	star_time = time.time()
+	
 	is_ready = False
 	x = 400
 	y = 10
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -556,14 +561,14 @@ def txt_third_5():
 			button_txt(110, 140, 630, 100, 'Ваааа, бежиииим!!!', x_sh = 30, y_sh = 30, action = txt_third_52 )
 			button_txt(110, 300, 630, 100, F5_1, x_sh = 30, y_sh = 30, action = txt_third_51 )
 			print_text(F5_2, 170, 360, font_col = text_col)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_51():
 	is_ready = False
 	x = 860
 	y = 10
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -583,7 +588,7 @@ def txt_third_51():
 		print_text(F6_1, 70, 340, font_col = text_col)
 		print_text(F6_2, 70, 370, font_col = text_col)
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_6)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_52():
@@ -598,7 +603,7 @@ def txt_third_52():
 	sound_roar.play()
 	pygame.time.delay(2000)
 	sound_roar.stop()
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -620,7 +625,7 @@ def txt_third_52():
 		print_text(F7_2, 70, 370, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_6():
@@ -636,11 +641,11 @@ def txt_third_6():
 		print_text(C6_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		print_text(C6_2, 70, 370, font_col = text_col) #Выведет сам текст сюжета
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_7)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_8():
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -648,7 +653,7 @@ def txt_third_8():
 		app.blit(trans(back_img3), (0, 0))
 		button_txt(110, 140, 630, 100, '...', x_sh = 30, y_sh = 30, action = txt_third_9)
 		button_txt(110, 300, 630, 100, 'М-да...', x_sh = 30, y_sh = 30, action = txt_third_9)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_7():
@@ -664,16 +669,16 @@ def txt_third_7():
 		print_text(C7_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		print_text(C7_2, 70, 370, font_col = text_col)
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_8)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_9():
-	star_time = time.time()
+	
 	is_ready = False
 	x = 860
 	y = 10
 	sigh = 3
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -693,7 +698,7 @@ def txt_third_9():
 		print_text(C8_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_10)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_third_10():
@@ -711,17 +716,17 @@ def txt_third_10():
         print_text(C9_2, 70, 370, font_col = text_col) #Выведет сам текст сюжета
 
         button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fourth, back_1 = back_img3, back_2= back_img4)
-        pygame.display.update()
+        update_with_mouse()
 
 
 def txt_fourth():
-	star_time = time.time()
+	
 	is_ready = False
 	x_komp = -700
 	x_wolf = -460
 	y = 10
 	sigh = 3
-	star_time = time.time()
+	
 	sound_river.stop()
 	sound_forest.set_volume(0.2)
 	sound_forest.play()
@@ -745,7 +750,7 @@ def txt_fourth():
 			print_text(D1_2, 70, 370, font_col = text_col)
 			
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fourth_1)
-		pygame.display.update()  
+		update_with_mouse()  
 
 
 def txt_fourth_1():
@@ -760,7 +765,7 @@ def txt_fourth_1():
 		button_txt(110, 300, 630, 100, F8_1, x_sh = 30, y_sh = 30, action = txt_fourth_2,back_1= back_img4, back_2= back_img5)
 		print_text(F8_2, 170, 360, font_col = text_col)
 		
-		pygame.display.update()
+		update_with_mouse()
 
 def txt_fourth_2():
 	while True:
@@ -777,7 +782,7 @@ def txt_fourth_2():
 		print_text(D2_1, 70, 340, font_col = text_col) 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fourth_3)
-		pygame.display.update()      
+		update_with_mouse()      
 
 
 def txt_fourth_3():
@@ -795,7 +800,7 @@ def txt_fourth_3():
 		print_text("Нашёл. Эмм, ожерелье?", 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fourth_4)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fourth_4():
@@ -816,7 +821,7 @@ def txt_fourth_4():
 		score_decor += 1
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_0, back_1= back_img5, back_2= back_img6)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fourth_12():
@@ -834,14 +839,14 @@ def txt_fourth_12():
 		print_text(D4_2, 70, 370, font_col = text_col) 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_0, back_1= back_img4, back_2= back_img6)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_0():
 	is_ready = False
 	x = -860
 	y = 10
-	star_time = time.time()
+	
 	sound_forest.stop()
 	sound_before.set_volume(0.2)
 	sound_before.play()
@@ -860,7 +865,7 @@ def txt_fifth_0():
 
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth():
@@ -880,7 +885,7 @@ def txt_fifth():
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_1)
 
-		pygame.display.update()  
+		update_with_mouse()  
 
 
 def txt_fifth_1():
@@ -895,14 +900,14 @@ def txt_fifth_1():
 		button_txt(110, 300, 630, 100, F9_3, x_sh = 30, y_sh = 30, action = txt_fifth_12)
 		print_text(F9_4, 140, 360, font_col = text_col)
 			
-		pygame.display.update()     
+		update_with_mouse()     
 
 
 def txt_fifth_12():
 	global score_win
 	is_ready = False
 	x = 860
-	star_time = time.time()
+	
 
 	while True:
 		for event in pygame.event.get():
@@ -923,7 +928,7 @@ def txt_fifth_12():
 				print_text(H1_2, 70, 370, font_col = text_col) 
 			if is_ready == True:
 				button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth, back_1=back_img6, back_2=back_img8)
-			pygame.display.update()
+			update_with_mouse()
 		else:
 			app.blit(trans(back_img6), (0, 0))
 			app.blit(kompon_img4, (500, 10))#Всавить спрайт персонажа
@@ -934,7 +939,7 @@ def txt_fifth_12():
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth, back_1=back_img6, back_2=back_img8)
 
-			pygame.display.update()
+			update_with_mouse()
 
 
 def txt_fifth_11():
@@ -951,11 +956,11 @@ def txt_fifth_11():
 		print_text("Вот это настрой!", 70, 340, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_02, back_1=back_img6, back_2=back_img7)
-		pygame.display.update()             
+		update_with_mouse()             
 
 
 def txt_fifth_02():
-	star_time = time.time()
+	
 	sound_before.stop()
 	sound_noise.set_volume(0.1)
 	sound_noise.play()
@@ -966,11 +971,11 @@ def txt_fifth_02():
 
 		app.blit(trans(back_img7), (0, 0))
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_2)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_2():
-	star_time = time.time()
+	
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -985,13 +990,13 @@ def txt_fifth_2():
 		print_text(E2_2, 70, 370, font_col = text_col)
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_3)
 
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_3():
 	is_ready = False
 	x = 860
-	star_time = time.time()
+	
 
 	while True:
 		for event in pygame.event.get():
@@ -1011,7 +1016,7 @@ def txt_fifth_3():
 		print_text(E3_3, 70, 400, font_col = text_col)
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_4)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_4():
@@ -1026,7 +1031,7 @@ def txt_fifth_4():
 		button_txt(110, 300, 630, 100, H3_1, x_sh = 30, y_sh = 30, action = txt_fifth_42)
 		print_text(H3_2, 140, 360, font_col = text_col)
 			
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_41():
@@ -1043,7 +1048,7 @@ def txt_fifth_41():
 		print_text("A жаль, такую возможность упустили.", 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth, back_1=back_img7, back_2=back_img8)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_42():
@@ -1063,7 +1068,7 @@ def txt_fifth_42():
 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_5)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_5():
@@ -1078,7 +1083,7 @@ def txt_fifth_5():
 		print_text(H4_2, 140, 350, font_col = text_col)
 		print_text(H4_3, 140, 380, font_col = text_col)
 
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_6():
@@ -1097,7 +1102,7 @@ def txt_fifth_6():
 		print_text(E5_3, 70, 400, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_7)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_7():
@@ -1115,14 +1120,14 @@ def txt_fifth_7():
 			print_text(H5_3, 140, 210, font_col = text_col)
 			button_txt(110, 300, 630, 100, H5_4, x_sh = 30, y_sh = 30, action = txt_fifth_8)
 			print_text(H5_5, 140, 350, font_col = text_col)
-			pygame.display.update()     
+			update_with_mouse()     
 		else:
 			app.blit(trans(back_img7), (0, 0))
 			button_txt(110, 140, 630, 100, '(...Тут мог быть другой вариант...)', x_sh = 30, y_sh = 30, action = txt_fifth_8)
 			print_text('Может другое?', 140, 190, font_col = text_col)
 			button_txt(110, 300, 630, 100, H5_4, x_sh = 30, y_sh = 30, action = txt_fifth_8)
 			print_text(H5_5, 140, 350, font_col = text_col)
-			pygame.display.update() 
+			update_with_mouse() 
 
 
 def txt_fifth_8():
@@ -1141,7 +1146,7 @@ def txt_fifth_8():
 		print_text(E6_3, 70, 400, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_fifth_10)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_10():
@@ -1156,7 +1161,7 @@ def txt_fifth_10():
 		
 		button_txt(110, 300, 630, 100, 'Пожалуй я возьму его', x_sh = 30, y_sh = 30, action = txt_fifth_09)
 			
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_fifth_090():
@@ -1185,13 +1190,13 @@ def txt_fifth_9():
 		print_text(E7_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth, back_1=back_img7, back_2=back_img8)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth():
 	is_ready = False
 	x = -460
-	star_time = time.time()
+	
 	sound_noise.stop()
 	sound_before.stop()
 	sound_around.set_volume(0.2)
@@ -1217,7 +1222,7 @@ def txt_sixth():
 		print_text(E8_6, 70, 490, font_col = text_col)
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_0)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth_0():
@@ -1231,13 +1236,13 @@ def txt_sixth_0():
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_11)
 		else:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_1, back_1=back_img8, back_2=back_img9)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth_11():
 	is_ready = False
 	x = 860
-	star_time = time.time()
+	
 	global score_win
 
 	while True:
@@ -1259,11 +1264,11 @@ def txt_sixth_11():
 		print_text(E9_2, 70, 370, font_col = text_col)
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_12, back_1=back_img8, back_2=back_img9)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth_12():
-	star_time = time.time()
+	
 	sound_around.stop()
 	sound_cave_out.set_volume(0.1)
 	sound_cave_out.play()
@@ -1272,7 +1277,7 @@ def txt_sixth_12():
 	x_wolf = -460
 	y = 10
 	sigh = 3
-	star_time = time.time()
+	
 
 	while True:
 		for event in pygame.event.get():
@@ -1290,13 +1295,13 @@ def txt_sixth_12():
 
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_121,  back_1=back_img9, back_2=back_img10)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth_1():
 	is_ready = False
 	x = -460
-	star_time = time.time()
+	
 	sound_around.stop()
 	sound_cave_out.set_volume(0.1)
 	sound_cave_out.play()
@@ -1312,7 +1317,7 @@ def txt_sixth_1():
 			is_ready = True
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh, back_1=back_img9, back_2=back_img10)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_sixth_121():
@@ -1329,13 +1334,13 @@ def txt_sixth_121():
 		app.blit(kompon_img6, (70, 10))#Всавить спрайт персонажа
 		app.blit(wolf_img3, (450, 10)) 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_1)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh():
 	is_ready = False
 	x = -400
-	star_time = time.time()
+	
 	sound_cave_out.stop()
 	sound_cave_in.set_volume(0.3)
 	sound_cave_in.play()
@@ -1351,7 +1356,7 @@ def txt_seventh():
 			is_ready = True
 		if is_ready == True:
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_2)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_11():
@@ -1367,7 +1372,7 @@ def txt_seventh_11():
 		pygame.draw.rect(app, name_window, (90, 290, 150, 20)) #Окно для имени говорящего 
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_1)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_1():
@@ -1386,7 +1391,7 @@ def txt_seventh_1():
 		print_text(G1_2, 70, 370, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_2)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_2():
@@ -1407,7 +1412,7 @@ def txt_seventh_2():
 			print_text(G2_3, 70, 400, font_col = text_col)
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_3)
-			pygame.display.update()
+			update_with_mouse()
 		else:
 			app.blit(trans(back_img10), (0, 0))
 			app.blit(kompon_img7, (50, 10))
@@ -1418,7 +1423,7 @@ def txt_seventh_2():
 			print_text(G2_2, 70, 370, font_col = text_col)
 			print_text(G2_3, 70, 400, font_col = text_col)
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_3)
-			pygame.display.update()
+			update_with_mouse()
 
 
 def txt_seventh_3():
@@ -1441,7 +1446,7 @@ def txt_seventh_3():
 			print_text(G3_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_4)
-			pygame.display.update()
+			update_with_mouse()
 		else:
 			app.blit(trans(back_img10), (0, 0))
 			app.blit(kompon_img6, (50, 10))
@@ -1451,7 +1456,7 @@ def txt_seventh_3():
 			print_text(G3_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_4)
-			pygame.display.update()
+			update_with_mouse()
 
 
 def txt_seventh_4():
@@ -1472,14 +1477,14 @@ def txt_seventh_4():
 		print_text(G4_2, 70, 370, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_5)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_5():
 	is_ready = False
 	x = 700
 	y = 540
-	star_time = time.time()
+	
 	sound_crawl.set_volume(0.1)
 	sound_crawl.play()
 	while True:
@@ -1502,7 +1507,7 @@ def txt_seventh_5():
 			print_text(G5_2, 70, 370, font_col = text_col)
 
 			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_6)
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
@@ -1523,7 +1528,7 @@ def txt_seventh_7():
 		print_text(G8_1, 70, 340, font_col = text_col) #Выведет сам текст сюжета
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_81)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_81():
@@ -1554,7 +1559,7 @@ def txt_seventh_8():
 			print_text(H7_2, 140, 200, font_col = text_col)
 			button_txt(110, 300, 630, 100, H7_6, x_sh = 30, y_sh = 30, action = txt_seventh_7)
 			print_text(H7_7, 140, 360, font_col = text_col)
-			pygame.display.update()
+			update_with_mouse()
 		elif score_decor == 0:
 			app.blit(trans(back_img10), (0, 0))
 			button_txt(110, 140, 630, 100, H7_3, x_sh = 30, y_sh = 30, action = txt_seventh_7)
@@ -1562,7 +1567,7 @@ def txt_seventh_8():
 			print_text(H7_5, 140, 210, font_col = text_col)
 			button_txt(110, 300, 630, 100, H7_6, x_sh = 30, y_sh = 30, action = txt_seventh_7)
 			print_text(H7_7, 140, 360, font_col = text_col) 
-			pygame.display.update() 
+			update_with_mouse() 
 
 
 def txt_seventh_71():
@@ -1582,7 +1587,7 @@ def txt_seventh_71():
 		print_text(G6_4, 70, 430, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_72)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_72():
@@ -1605,7 +1610,7 @@ def txt_seventh_72():
 		print_text(G7_5, 70, 460, font_col = text_col)
 
 		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_seventh_999)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_6():
@@ -1620,7 +1625,7 @@ def txt_seventh_6():
 		button_txt(110, 300, 630, 100, 'Если мне для того, чтобы попасть домой ', x_sh = 30, y_sh = 30, action = txt_seventh_7)
 		print_text('потребуется сразить тебя, то я сделаю это!', 140, 350, font_col = text_col)
 			
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_end():
@@ -1631,7 +1636,7 @@ def txt_seventh_end():
 		app.blit(trans(back_img10), (0, 0))
 		button_txt(110, 140, 630, 100, 'Я вернусь домой любой ценой! Аaaa!!', x_sh = 30, y_sh = 30, action = txt_seventh_9)
 		button_txt(110, 300, 630, 100, 'Ты падёшь от моего оружия!!!', x_sh = 30, y_sh = 30, action = txt_seventh_9)	
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_death():
@@ -1642,7 +1647,7 @@ def txt_seventh_death():
 		app.blit(trans(back_img10), (0, 0))
 		button_txt(110, 140, 630, 100, 'ААААААААА!!!', x_sh = 30, y_sh = 30, action = txt_seventh_99)
 		button_txt(110, 300, 630, 100, 'Я ВЫБИРУСЬ ОТ СЮДА!!!', x_sh = 30, y_sh = 30, action = txt_seventh_99)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_99():
@@ -1663,7 +1668,7 @@ def txt_seventh_99():
 		score_answer = 0
 		score_decor = 0
 		button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_9():
@@ -1686,7 +1691,7 @@ def txt_seventh_9():
 		score_decor = 0
 
 		button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
-		pygame.display.update()
+		update_with_mouse()
 
 
 def txt_seventh_999():
@@ -1709,7 +1714,7 @@ def txt_seventh_999():
 		score_decor - 0
 
 		button_Next(670, 460, 120, 40, 'Молодец!', x_sh = 15, y_sh = 15, action=the_end(back_img11))
-		pygame.display.update()
+		update_with_mouse()
 
 
 def which_answers1(answer):
@@ -1729,11 +1734,11 @@ def which_answers1(answer):
 		print_text(chr_1name, 32, 217, font_col = name_col, font_size= 30)
 		score_answer = 3
 	
-	pygame.display.update()
+	update_with_mouse()
 
 
 def first_loc():
-	star_time = time.time()
+	
 	sound_moon.set_volume(0.3)
 	sound_moon.play()
 	while True:
@@ -1753,7 +1758,7 @@ def first_loc():
 		
 		
 		#вставить второе перепутье по логике первой главы.
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
@@ -1818,7 +1823,7 @@ def black(back_1, back_2):
 			app.blit(trans(back_2), (0, 0))
 		
 		app.blit(trans(black_img), (x, 0))
-		pygame.display.update()
+		update_with_mouse()
 
 
 def usr_name_input():
@@ -1848,7 +1853,7 @@ def usr_name_input():
 		button_txt(300, 300, 200, 70, usr_name, x_sh=30, y_sh=30)
 		button_txt(330, 400, 140, 70, 'ВЫХОД', x_sh=30, y_sh=30, action=exit)
 
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS // 2)
 
 
@@ -1861,11 +1866,14 @@ def enter_name():
 		app.blit(trans(back_img1), (0,0))
 		usr_name_input()
 		button_txt(300, 200, 220, 150, 'ВЫХОД', x_sh = 30, y_sh = 30, action = exit)
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
 def menu():
+	global score_usr
+
+	score_usr = 0
 	while True:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -1874,7 +1882,7 @@ def menu():
 		app.blit(trans(back_img11), (0,0))
 		button_txt(100, 200, 200, 150, 'НАЧАТЬ', x_sh = 30, y_sh = 30, action=enter_name, back_1=back_img11, back_2=back_img1)
 		button_txt(300, 200, 220, 150, 'ВЫХОД', x_sh = 30, y_sh = 30, action = exit)
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS)
 
 
@@ -1898,7 +1906,7 @@ def the_end(back=back_img1):
 		button_txt(650, 460, 120, 40, 'К МЕНЮ', x_sh = 15, y_sh = 15, action = menu)
 		button_txt(200, 460, 120, 40, 'ТОП', x_sh = 15, y_sh = 15, action = show_list)
 
-		pygame.display.update()
+		update_with_mouse()
 
 
 def show_list():
@@ -1923,7 +1931,7 @@ def show_list():
 		button_txt(500, 450, 140, 45, 'МЕНЮ', x_sh = 30, y_sh = 20, action=menu)
 		button_txt(200, 450, 140, 45, 'ВЫХОД', x_sh = 30, y_sh = 20, action=exit)
 
-		pygame.display.update()
+		update_with_mouse()
 		clock.tick(FPS // 2)
 
 
