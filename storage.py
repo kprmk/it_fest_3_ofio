@@ -2,9 +2,8 @@ import sqlite3 # structered query language
 # реляционная база данных (relation)
 
 class Storage:
-	def __init__(self, name='data.db'): #конструктор, вызывается при создании
-		self.nameDB = name # name Data Base
-		self.cnct = sqlite3.connect(name) # connect
+	def __init__(self): #конструктор, вызывается при создании
+		self.cnct = sqlite3.connect('data.db') # connect
 		self.crs = self.cnct.cursor() # crs - cursor
 		self.create_table()
 
