@@ -14,6 +14,8 @@ clock = pygame.time.Clock()
 start_time = time.time()
 
 pygame.mouse.set_visible(False)
+pygame.display.set_caption('OFIO')
+pygame.display.set_icon(pygame.image.load(r'assets\Background\logo.jpg'))
 ###########################################################
 col_in = (0, 200, 200)
 col_out = (153, 204, 255)
@@ -26,7 +28,6 @@ next_out = name_window
 score_usr = 0
 usr_name = ''
 score_win = 0 # Для вычесления исхода
-score_answer = 0 # Для определения последующего действия
 score_decor = 0 #Для ожерелья
 k_x = 0 #Для анимация компаньона 1ого
 ###########################################################
@@ -305,7 +306,7 @@ def txt_first_62():
 				exit()
 		score_win = 0
 		score_answer = 0
-		score_decor - 0
+		score_decor = 0
 
 		app.blit(trans(back_img1), (0, 0))
 		pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста 
@@ -587,7 +588,8 @@ def txt_third_51():
 		print_text(chr_unknown, 120, 290, font_col = name_col, font_size= 30)
 		print_text(F6_1, 70, 340, font_col = text_col)
 		print_text(F6_2, 70, 370, font_col = text_col)
-		button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_6)
+		if is_ready == True:
+			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_third_6)
 		update_with_mouse()
 
 
@@ -617,14 +619,14 @@ def txt_third_52():
 			is_ready = True
 		score_win = 0
 		score_answer = 0
-		score_decor - 0
+		score_decor = 0
 		app.blit(trans(back_img3), (0, 0))
 		app.blit(wolf_img2, (x, y))
 		pygame.draw.rect(app, window_col, (50, 310, 760, 200)) #Окно для текста 
 		print_text(F7_1, 70, 340, font_col = text_col)
 		print_text(F7_2, 70, 370, font_col = text_col)
-
-		button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
+		if is_ready == True:
+			button_Next(670, 460, 120, 40, 'КОНЕЦ', x_sh = 15, y_sh = 15, action = the_end)
 		update_with_mouse()
 
 
@@ -725,8 +727,7 @@ def txt_fourth():
 	x_komp = -700
 	x_wolf = -460
 	y = 10
-	sigh = 3
-	
+
 	sound_river.stop()
 	sound_forest.set_volume(0.2)
 	sound_forest.play()
@@ -1222,7 +1223,7 @@ def txt_sixth():
 		print_text(E8_6, 70, 490, font_col = text_col)
 		if is_ready is True:
 			# button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_0)
-			if score_win > 3:
+			if score_win > 4:
 				button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_11)
 			else:
 				button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_1, back_1=back_img8, back_2=back_img9)
@@ -1711,30 +1712,10 @@ def txt_seventh_999():
 		print_text(I3_3, 70, 400, font_col = text_col)
 		score_win = 0
 		score_answer = 0
-		score_decor - 0
+		score_decor = 0
 
 		button_Next(670, 460, 120, 40, 'Молодец!', x_sh = 15, y_sh = 15, action=the_end(back_img11))
 		update_with_mouse()
-
-
-def which_answers1(answer):
-	
-	if answer % 2 == 0:
-		pygame.draw.rect(app, window_col, (20, 220, 700, 200))
-		pygame.draw.rect(app, window_col, (30, 220, 150, 20))
-		app.blit(app, character_img, (780, 350))
-		print_text("Ура, а то я немного утомился.", 30, 210, font_col = text_col)
-		print_text(chr_1name, 32, 217, font_col = name_col, font_size= 30)
-		score_answer = 2
-	elif answer % 3 == 0:
-		pygame.draw.rect(app, window_col, (20, 220, 700, 200))
-		pygame.draw.rect(app, window_col, (30, 220, 150, 20))
-		app.blit(app, character_img, (780, 350))
-		print_text("И вправду, лучше держатся пути, а то вдруг что-нибудь произойдёт.", 30, 210, font_col = text_col)
-		print_text(chr_1name, 32, 217, font_col = name_col, font_size= 30)
-		score_answer = 3
-	
-	update_with_mouse()
 
 
 def first_loc():
