@@ -3,7 +3,6 @@ import pygame
 from storage import *
 from strings import *
 import time
-import pathlib
 
 
 W, H, FPS = 860, 540, 60
@@ -101,9 +100,9 @@ black_img = pygame.image.load(r'assets\Background\black.png')
 
 
 def update_with_mouse():
-	pygame.draw.circle(app, (255, 255, 255), pygame.mouse.get_pos(), 10)
-	# app.blit(cursor_img, pygame.mouse.get_pos())
+	pygame.draw.circle(app, (255, 255, 255), pygame.mouse.get_pos(), 5)
 	pygame.display.update()
+
 
 def trans(img):
 	return pygame.transform.scale(img, (860, 540))
@@ -1221,23 +1220,23 @@ def txt_sixth():
 		print_text(E8_4, 70, 430, font_col = text_col)
 		print_text(E8_5, 70, 460, font_col = text_col)
 		print_text(E8_6, 70, 490, font_col = text_col)
-		if is_ready == True:
-			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_0)
+		if is_ready is True:
+			# button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_0)
+			if score_win > 3:
+				button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_11)
+			else:
+				button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_1, back_1=back_img8, back_2=back_img9)
 		update_with_mouse()
 
 
-def txt_sixth_0():
-	global score_win
+# def txt_sixth_0():
+# 	global score_win
 
-	while True:
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				exit()
-		if score_win > 4:
-			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_11)
-		else:
-			button_Next(670, 460, 120, 40, 'Дальше', x_sh = 15, y_sh = 15, action = txt_sixth_1, back_1=back_img8, back_2=back_img9)
-		update_with_mouse()
+# 	while True:
+# 		for event in pygame.event.get():
+# 			if event.type == pygame.QUIT:
+# 				exit()
+# 		update_with_mouse()
 
 
 def txt_sixth_11():
@@ -1792,10 +1791,11 @@ def button_Next(x , y, w, h, mes, f_size=30, x_sh=15, y_sh=15, action=None, back
 	if x < mouse[0] < x + w and y < mouse[1] < y + h:
 		pygame.draw.rect(app, next_in, (x, y, w, h))
 		if action is not None and clicked[0] == 1:
-			pygame.time.delay(250)
 			score_usr += 1
-			if back_1 and back_2:
+			if back_1 is not None and back_2 is not None:
 				black(back_1, back_2)
+			else:
+				pygame.time.delay(250)
 			action()
 	else:
 		pygame.draw.rect(app, next_out, (x, y, w, h))
@@ -1936,5 +1936,5 @@ def show_list():
 		clock.tick(FPS // 2)
 
 
-data = Storage()
+data = DataBase()
 menu()

@@ -1,24 +1,23 @@
-import sqlite3 # structered query language
-# реляционная база данных (relation)
+import sqlite3
 
-class Storage:
-	def __init__(self): #конструктор, вызывается при создании
-		self.cnct = sqlite3.connect('data.db') # connect
-		self.crs = self.cnct.cursor() # crs - cursor
+class DataBase:
+	def __init__(self):
+		self.cnct = sqlite3.connect('info.db')
+		self.crs = self.cnct.cursor()
 		self.create_table()
 
 	def create_table(self):
-		self.crs = self.cnct.execute('''CREATE TABLE IF NOT EXISTS score_table (
-											name text, score int		)''')
+		self.crs = self.cnct.execute('''CREATE TABLE IF NOT EXISTS point_table (
+											user text, point int		)''')
 
-	def insert_into(self, name_usr, score):
-		self.crs.execute(f'''INSERT INTO score_table (name, score) 
-								VALUES('{name_usr}', '{score}')''')
+	def insert_into(self, name_usr, point):
+		self.crs.execute(f'''INSERT INTO point_table (user, point) 
+								VALUES('{name_usr}', '{point}')''')
 		self.cnct.commit()
 
 	def select_all(self):
-		self.crs.execute('''SELECT * FROM score_table ''')
+		self.crs.execute('''SELECT * FROM point_table ''')
 		return self.crs.fetchall()
 
-	def __del__(self):# деструктор, вызывается при уничтожении
+	def __del__(self):
 		self.cnct.close()
