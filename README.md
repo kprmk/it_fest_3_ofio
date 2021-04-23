@@ -1,5 +1,5 @@
 # INGINIRIUM & IT-Fest Py 3
-#### Проект для конкурса IT-Fest Python
+#### Проект для конкурса IT-Fest Python 2020
 #### Кейс 3.«Текстовый квест»
 
 ### !How to use!
